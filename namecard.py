@@ -1,23 +1,21 @@
-from file_util import  load, save
-import os
-
 
 class NameCard:
     def __init__(self):
-        self.book = []
+        self.book =[]
 
     
-        
+    def load(self, FILE_PATH):
+        try:
+            with open(FILE_PATH, 'rt', encoding='utf-8') as file:
+                list = file.readlines()
+                for line in list:
+                    line = line.strip()
+                    self.book.append(line)
+                return self.book
+        except Exception as e:
+            print(e)
 
-    def load(self, file_path):
-    
-        if os.path.exists(file_path):  
-            self.book = load(file_path)
-        else:                          
-            save(file_path, self.book)
 
-    def save(self, file_path):
-        save(file_path, self.book)
 
 
 
