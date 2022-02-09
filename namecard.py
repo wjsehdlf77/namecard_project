@@ -22,12 +22,10 @@ class NameCard:
 
 
     def save(self, name):
-
-
-
         con = sqlite3.connect(name)
-
         cursor = con.cursor()
+
+        cursor.execute("drop table if exists tbladdr")
         cursor.execute("create table tbladdr (name varchar(20), email varchar(30), phone varchar(30), addr text)")
 
         for ix in self.book:
